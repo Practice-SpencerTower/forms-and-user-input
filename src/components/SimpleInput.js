@@ -9,6 +9,7 @@ const SimpleInput = (props) => {
         hasError: nameInputError,
         valueChangedHandler: nameChangeHandler,
         inputBlurHandler: nameBlurHandler,
+        reset: resetNameInput,
     } = useInput((value) => value.trim() !== '');
 
     // EMAIL
@@ -66,8 +67,7 @@ const SimpleInput = (props) => {
             return;
         }
 
-        setEnteredName(true);
-        setEnteredNameTouched(false);
+        resetNameInput();
 
         setEnteredEmail(true);
         setEnteredEmailTouched(false);
@@ -83,6 +83,10 @@ const SimpleInput = (props) => {
         ? 'form-control invalid'
         : 'form-control';
 
+    const emailInputClasses = emailInputInvalid
+        ? 'form-control invalid'
+        : 'form-control';
+
     return (
         <form onSubmit={formSubmitHandler}>
             <div className={nameInputClasses}>
@@ -90,14 +94,14 @@ const SimpleInput = (props) => {
                 <input
                     type="text"
                     id="name"
-                    onChange={nameInputChangeHandler}
-                    onBlur={nameInputBlurHandler}
+                    onChange={nameChangeHandler}
+                    onBlur={nameBlurHandler}
                 />
-                {nameInputInvalid && (
+                {nameInputError && (
                     <p className={'error-text'}>Name must not be empty.</p>
                 )}
             </div>
-            <div className={nameInputClasses}>
+            <div className={emailInputClasses}>
                 <label htmlFor="email">Email</label>
                 <input
                     type="text"
