@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 import useInput from '../hooks/use-input';
 
 const SimpleInput = (props) => {
@@ -34,31 +32,23 @@ const SimpleInput = (props) => {
     const formSubmitHandler = (event) => {
         event.preventDefault();
 
-        setEnteredNameTouched(true);
-        setEnteredEmailTouched(true);
-
         // exit function if user input is empty on submit
         if (!enteredNameIsValid || !enteredEmailIsValid) {
             return;
         }
 
-        resetNameInput();
-
-        setEnteredEmail(true);
-        setEnteredEmailTouched(false);
-
         console.log('enteredName', enteredName);
         console.log('enteredEmail', enteredEmail);
-        // reset name value
-        setEnteredName('');
-        setEnteredEmail('');
+
+        resetNameInput();
+        resetEmailInput();
     };
 
-    const nameInputClasses = nameInputInvalid
+    const nameInputClasses = nameInputError
         ? 'form-control invalid'
         : 'form-control';
 
-    const emailInputClasses = emailInputInvalid
+    const emailInputClasses = emailInputError
         ? 'form-control invalid'
         : 'form-control';
 
@@ -81,10 +71,10 @@ const SimpleInput = (props) => {
                 <input
                     type="text"
                     id="email"
-                    onChange={emailInputChangeHandler}
-                    onBlur={emailInputBlurHandler}
+                    onChange={emailChangeHandler}
+                    onBlur={emailBlurHandler}
                 />
-                {emailInputInvalid && (
+                {emailInputError && (
                     <p className={'error-text'}>Email invalid.</p>
                 )}
             </div>
