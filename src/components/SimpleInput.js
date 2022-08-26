@@ -91,7 +91,8 @@ const SimpleInput = (props) => {
                 {nameInputInvalid && (
                     <p className={'error-text'}>Name must not be empty.</p>
                 )}
-
+            </div>
+            <div className={nameInputClasses}>
                 <label htmlFor="email">Email</label>
                 <input
                     type="text"
