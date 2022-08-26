@@ -11,10 +11,17 @@ const SimpleInput = (props) => {
     const formSubmitHandler = (event) => {
         event.preventDefault();
 
+        // exit function if user input is empty on submit
+        if (enteredName.trim() === '') {
+            return;
+        }
+
         console.log('enteredName', enteredName);
         console.log('nameInputRef', nameInputRef);
         const enteredValue = nameInputRef.current.value;
         console.log('enteredValue', enteredValue);
+        // reset name value
+        setEnteredName('');
     };
 
     return (
