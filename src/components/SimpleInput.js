@@ -8,6 +8,17 @@ const SimpleInput = (props) => {
 
     const nameInputChangeHandler = (event) => {
         setEnteredName(event.target.value);
+
+        if (enteredName.trim() !== '') {
+            setEnteredNameValid(true);
+        }
+    };
+
+    const nameInputBlurHandler = (event) => {
+        setEnteredNameTouched(true);
+        if (enteredName.trim() === '') {
+            setEnteredNameValid(false);
+        }
     };
 
     const formSubmitHandler = (event) => {
@@ -45,6 +56,7 @@ const SimpleInput = (props) => {
                     type="text"
                     id="name"
                     onChange={nameInputChangeHandler}
+                    onBlur={nameInputBlurHandler}
                 />
                 {nameInputInvalid && (
                     <p className={'error-text'}>Name must not be empty.</p>
