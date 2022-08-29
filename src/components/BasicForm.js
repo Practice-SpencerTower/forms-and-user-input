@@ -4,9 +4,27 @@ const isNotEmpty = (value) => value.trim() !== '';
 const isEmail = (value) => value.includes('@');
 
 const BasicForm = (props) => {
-    useInput();
-    useInput();
-    useInput();
+    const {
+        value: firstNameValue,
+        isValid: firstNameValid,
+        valueChangeHandler: firstNameChangeHandler,
+        inputBlurHandler: firstNameBlurHandler,
+        reset: resetFirstName,
+    } = useInput(isNotEmpty);
+    const {
+        value: lastNameValue,
+        isValid: lastNameValid,
+        valueChangeHandler: lastNameChangeHandler,
+        inputBlurHandler: lastNameBlurHandler,
+        reset: resetLastName,
+    } = useInput(isNotEmpty);
+    const {
+        value: emailValue,
+        isValid: emailValid,
+        valueChangeHandler: emailChangeHandler,
+        inputBlurHandler: emailBlurHandler,
+        reset: resetEmailName,
+    } = useInput(isNotEmpty);
 
     return (
         <form>
