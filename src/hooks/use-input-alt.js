@@ -6,7 +6,16 @@ const initialInputState = {
 };
 
 const inputStateReducer = (state, action) => {
-    // return new state snapshot
+    if (action.type === 'INPUT') {
+        return { value: action.value, isTouched: state.isTouched };
+    }
+    if (action.type === 'BLUR') {
+        return { isTouched: true, value: state.value };
+    }
+    if (action.type === 'RESET') {
+        return { isTouched: false, value: '' };
+    }
+
     return initialInputState;
 };
 
@@ -24,16 +33,15 @@ const useInput = (validateValue) => {
     };
 
     const inputBlurHandler = (event) => {
-        dispatch({ type: 'BLUR', value: event.target.value });
+        dispatch({ type: 'BLUR' });
     };
 
     const reset = () => {
-        setEnteredValue('');
-        setIsTouched(false);
+        dispatch({ type: 'RESET' });
     };
 
     return {
-        value: enteredValue,
+        value: inputState.value,
         isValid: valueIsValid,
         hasError,
         valueChangeHandler,
