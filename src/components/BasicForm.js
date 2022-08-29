@@ -62,7 +62,7 @@ const BasicForm = (props) => {
         <form onSubmit={submitHandler}>
             <div className="control-group">
                 <div className="form-control">
-                    <label htmlFor="name">First Name</label>
+                    <label htmlFor="first-name">First Name</label>
                     <input
                         type="text"
                         id="name"
@@ -73,7 +73,7 @@ const BasicForm = (props) => {
                     {firstNameHasError && <p>Please enter first name.</p>}
                 </div>
                 <div className="form-control">
-                    <label htmlFor="name">Last Name</label>
+                    <label htmlFor="last-name">Last Name</label>
                     <input
                         type="text"
                         id="name"
@@ -85,7 +85,7 @@ const BasicForm = (props) => {
                 </div>
             </div>
             <div className="form-control">
-                <label htmlFor="name">E-Mail Address</label>
+                <label htmlFor="email">E-Mail Address</label>
                 <input
                     type="text"
                     id="name"
