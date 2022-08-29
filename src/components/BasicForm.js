@@ -27,7 +27,13 @@ const BasicForm = (props) => {
         valueChangeHandler: emailChangeHandler,
         inputBlurHandler: emailBlurHandler,
         reset: resetEmailName,
-    } = useInput(isNotEmpty);
+    } = useInput(isEmail);
+
+    let formIsValid = false;
+
+    if (firstNameValid && lastNameValid && emailValid) {
+        formIsValid = true;
+    }
 
     // dynamically assign classes depending on error status
     const firstNameClasses = firstNameHasError
@@ -78,7 +84,7 @@ const BasicForm = (props) => {
                 {emailHasError && <p>Please enter email.</p>}
             </div>
             <div className="form-actions">
-                <button>Submit</button>
+                <button disabled={!formIsValid}>Submit</button>
             </div>
         </form>
     );
