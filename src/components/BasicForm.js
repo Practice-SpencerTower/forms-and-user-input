@@ -52,7 +52,13 @@ const BasicForm = (props) => {
             </div>
             <div className="form-control">
                 <label htmlFor="name">E-Mail Address</label>
-                <input type="text" id="name" />
+                <input
+                    type="text"
+                    id="name"
+                    value={emailValue}
+                    onChange={emailChangeHandler}
+                    onBlur={emailBlurHandler}
+                />
             </div>
             <div className="form-actions">
                 <button>Submit</button>
