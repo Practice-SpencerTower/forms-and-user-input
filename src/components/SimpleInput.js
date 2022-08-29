@@ -5,19 +5,19 @@ const SimpleInput = (props) => {
         value: enteredName,
         isValid: enteredNameIsValid,
         hasError: nameInputError,
-        valueChangedHandler: nameChangeHandler,
+        valueChangeHandler: nameChangeHandler,
         inputBlurHandler: nameBlurHandler,
         reset: resetNameInput,
-    } = useInput((value) => value.includes('@'));
+    } = useInput((value) => value.trim() !== '');
 
     const {
         value: enteredEmail,
         isValid: enteredEmailIsValid,
         hasError: emailInputError,
-        valueChangedHandler: emailChangeHandler,
+        valueChangeHandler: emailChangeHandler,
         inputBlurHandler: emailBlurHandler,
         reset: resetEmailInput,
-    } = useInput((value) => value.trim() !== '');
+    } = useInput((value) => value.includes('@'));
 
     // Validate entire form
 
