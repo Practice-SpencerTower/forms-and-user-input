@@ -29,6 +29,17 @@ const BasicForm = (props) => {
         reset: resetEmailName,
     } = useInput(isNotEmpty);
 
+    // dynamically assign classes depending on error status
+    const firstNameClasses = firstNameHasError
+        ? 'form-control invalid'
+        : 'form-control';
+    const lastNameClasses = lastNameHasError
+        ? 'form-control invalid'
+        : 'form-control';
+    const emailClasses = emailHasError
+        ? 'form-control invalid'
+        : 'form-control';
+
     return (
         <form>
             <div className="control-group">
