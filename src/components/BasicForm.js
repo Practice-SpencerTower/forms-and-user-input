@@ -7,6 +7,7 @@ const BasicForm = (props) => {
     const {
         value: firstNameValue,
         isValid: firstNameValid,
+        hasError: firstNameHasError,
         valueChangeHandler: firstNameChangeHandler,
         inputBlurHandler: firstNameBlurHandler,
         reset: resetFirstName,
@@ -14,6 +15,7 @@ const BasicForm = (props) => {
     const {
         value: lastNameValue,
         isValid: lastNameValid,
+        hasError: lastNameHasError,
         valueChangeHandler: lastNameChangeHandler,
         inputBlurHandler: lastNameBlurHandler,
         reset: resetLastName,
@@ -21,6 +23,7 @@ const BasicForm = (props) => {
     const {
         value: emailValue,
         isValid: emailValid,
+        hasError: emailHasError,
         valueChangeHandler: emailChangeHandler,
         inputBlurHandler: emailBlurHandler,
         reset: resetEmailName,
