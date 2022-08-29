@@ -26,7 +26,7 @@ const BasicForm = (props) => {
         hasError: emailHasError,
         valueChangeHandler: emailChangeHandler,
         inputBlurHandler: emailBlurHandler,
-        reset: resetEmailName,
+        reset: resetEmail,
     } = useInput(isEmail);
 
     let formIsValid = false;
@@ -34,6 +34,18 @@ const BasicForm = (props) => {
     if (firstNameValid && lastNameValid && emailValid) {
         formIsValid = true;
     }
+
+    const submitHandler = (event) => {
+        event.preventDefault();
+        if (!formIsValid) return;
+
+        console.log('Submitted!');
+        console.log(firstNameValue, lastNameValue, emailValue);
+
+        resetFirstName();
+        resetLastName();
+        resetEmail();
+    };
 
     // dynamically assign classes depending on error status
     const firstNameClasses = firstNameHasError
@@ -47,7 +59,7 @@ const BasicForm = (props) => {
         : 'form-control';
 
     return (
-        <form>
+        <form onSubmit={submitHandler}>
             <div className="control-group">
                 <div className="form-control">
                     <label htmlFor="name">First Name</label>
