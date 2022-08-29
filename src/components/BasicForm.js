@@ -31,7 +31,13 @@ const BasicForm = (props) => {
             <div className="control-group">
                 <div className="form-control">
                     <label htmlFor="name">First Name</label>
-                    <input type="text" id="name" />
+                    <input
+                        type="text"
+                        id="name"
+                        value={firstNameValue}
+                        onChange={firstNameChangeHandler}
+                        onBlur={firstNameBlurHandler}
+                    />
                 </div>
                 <div className="form-control">
                     <label htmlFor="name">Last Name</label>
